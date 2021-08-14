@@ -2,8 +2,8 @@
 #include "NetworkingConstants.h"
 #include "Lib.h"
 
-const char *SSID = "Your Router Name";
-const char *Password = "Your Router Password";
+const char *SSID = "Your router name(SSID)";
+const char *Password = "Your router password";
 
 int DelayInterval = 1000;
 int ConnectedCount = 0;

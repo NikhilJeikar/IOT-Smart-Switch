@@ -11,7 +11,6 @@
 #define RequestFooter "+|-|+"
 
 #define SizeEOD 5
-#define Buffer 1024 * 4
 
 #define NotUsed 0
 #define Used 1
@@ -24,6 +23,12 @@
 #define RequestFooterSize 5
 
 // Global variables
+extern IPAddress LocalIP;
+extern IPAddress Subnet;
+extern IPAddress Gateway;
+extern IPAddress PrimaryDNS;
+extern IPAddress SecondaryDNS;
+
 extern const char *SSID;
 extern const char *Password;
 

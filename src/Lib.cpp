@@ -9,8 +9,15 @@ char Data[NumberGPIO];
 String Names[NumberGPIO];
 WiFiServer TCPServer(Port);
 
+IPAddress LocalIP(192, 168, 100, 0);
+IPAddress Subnet(192, 168, 1, 1);
+IPAddress Gateway(255, 255, 0, 0);
+IPAddress PrimaryDNS(8, 8, 8, 8);  
+IPAddress SecondaryDNS(8, 8, 4, 4);
+
 // Local Function Declaration
 void SendState();
+void SendButtonName(int);
 void GetButtonState();
 void PreserveState();
 void LoadState();
@@ -47,7 +54,6 @@ void LoadState()
         File Document = LittleFS.open("/Preserved.txt","r");
         int index = 0;
         String temp = Document.readStringUntil('\n');
-        Serial.println(temp);
         for(char val : temp)
         {
             if (val == '0')
@@ -59,7 +65,6 @@ void LoadState()
         for (int i = 0; i < NumberGPIO; i++)
         {
             String tem = Document.readStringUntil('\n');
-            Serial.println(tem);
             Names[i] = tem;
         }
         GetButtonState();
@@ -111,12 +116,26 @@ void SendState()
     }
 }
 
+void SendButtonName(int ID)
+{
+    PreserveState();
+    GetButtonState();
+    for (WiFiClient i : Clients)
+    {
+        String temp = String(ID) + " " + Names[ID];
+        char tem[temp.length()];
+        strcpy(tem,temp.c_str());
+        i.write(tem);
+    }
+}
+
 // Global Function Defenition
 void Init()
 {
     Serial.begin(BaudRate);
     Serial.println();
 
+    WiFi.config(LocalIP,Gateway,Subnet,PrimaryDNS,SecondaryDNS);
     WiFi.begin(SSID, Password);
     
     Serial.println("Connecting to Wifi");
@@ -164,6 +183,7 @@ void Operate(String RData, WiFiClient Client)
     else if(Start == SetName)
     {
         Names[Command.toInt()] = Client.readStringUntil('\n');
+        SendButtonName(Command.toInt());
     }
     else if(Start == GetName)
     {

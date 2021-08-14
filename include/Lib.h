@@ -11,4 +11,4 @@ extern String Names[NumberGPIO];
 
 // Global Functions for Basic routine
 void Init();
-void Operate(String RData, WiFiClient Client);
+void Operate(String, WiFiClient);
