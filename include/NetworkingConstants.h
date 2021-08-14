@@ -27,7 +27,6 @@
 extern const char *SSID;
 extern const char *Password;
 
-extern const int Channel;
 extern int DelayInterval;
 extern int ConnectedCount;
 extern int ConnectionStat[MaxConnection];

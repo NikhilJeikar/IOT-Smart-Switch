@@ -2,10 +2,9 @@
 #include "NetworkingConstants.h"
 #include "Lib.h"
 
-const char *SSID = "Home";
-const char *Password = "r@nd0m*24680";
+const char *SSID = "Your WiFi name";
+const char *Password = "Your WiFi Password";
 
-const int Channel = 0;
 int DelayInterval = 1000;
 int ConnectedCount = 0;
 int ConnectionStat[MaxConnection] = {NotUsed};

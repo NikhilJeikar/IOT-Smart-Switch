@@ -60,6 +60,7 @@ void Operate(String RData, WiFiClient Client)
 {
     String Start = RData.substring(0, RequestHeaderSize);
     String Command = RData.substring(RequestHeaderSize, RData.length() - RequestFooterSize);
+    String Footer = RData.substring(RData.length() - RequestFooterSize);
     if (Start == Get)
     {
         GetState();
