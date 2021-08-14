@@ -2,8 +2,8 @@
 #include "NetworkingConstants.h"
 #include "Lib.h"
 
-const char *SSID = "Your WiFi name";
-const char *Password = "Your WiFi Password";
+const char *SSID = "Your Router Name";
+const char *Password = "Your Router Password";
 
 int DelayInterval = 1000;
 int ConnectedCount = 0;

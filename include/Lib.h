@@ -6,10 +6,9 @@
 extern bool Switches[];
 extern WiFiServer TCPServer;
 
-extern char Data[NumberGPIO + 1];
+extern char Data[NumberGPIO];
 extern String Names[NumberGPIO];
 
 // Global Functions for Basic routine
 void Init();
-void GetState();
 void Operate(String RData, WiFiClient Client);

@@ -5,11 +5,11 @@
 #define GetName "GID"
 #define Get "GET"
 #define Set "SET"
+#define Reset "RST"
+#define Count "CNT"
 
-#define Seperator '/'
 #define RequestFooter "+|-|+"
 
-#define SizeSeperator 7
 #define SizeEOD 5
 #define Buffer 1024 * 4
 
